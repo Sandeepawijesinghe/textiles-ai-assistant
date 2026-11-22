@@ -110,15 +110,14 @@ Open the local URL displayed in the terminal to access the chatbot.
 - 🔎 Improved customer query understanding.
 - 🔗 Integration with additional store services.
 
-## 👨‍💻 Developer
-
+👨‍💻 Developer
 Sandeepa Wijesinghe
 
 Aspiring AI Engineer | Mechatronics & Robotics Enthusiast
 
 Interested in Artificial Intelligence, Agentic AI, Generative AI, Robotics, and Intelligent Automation.
 
-GitHub: Sandeepawijesinghe
+GitHub: [Sandeepawijesinghe]
 
 ## 📄 License
 
