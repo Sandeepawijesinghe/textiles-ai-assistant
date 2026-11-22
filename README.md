@@ -110,6 +110,21 @@ Open the local URL displayed in the terminal to access the chatbot.
 - 🔎 Improved customer query understanding.
 - 🔗 Integration with additional store services.
 
+## 🖼️ Screenshots
+
+### ☀️ Light Mode – Welcome Screen
+![Welcome Light](screenshots/01-welcome-light.png)
+
+### 🏬 Store Floor Guide
+![Floor Guide](screenshots/02-floor-guide.png)
+
+### 💬 AI Chat Conversation
+![Chat Conversation](screenshots/03-chat-conversation.png)
+
+### 🌙 Dark Mode – Welcome Screen
+![Welcome Dark](screenshots/04-welcome-dark.png)
+
+
 ## 👨‍💻 Developer
 
 **Sandeepa Wijesinghe**  
