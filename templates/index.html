@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f3ef">
+    <title>WIJESINGHE TEXTILES | AI Customer Support</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div class="brand">
+                <img src="{{ url_for('static', filename='images/logo.webp') }}"
+                     alt="Wijesinghe Textiles Logo"
+                     class="brand-logo">
+
+                <div class="brand-info">
+                    <h1>WIJESINGHE TEXTILES</h1>
+
+                    <div class="status-line">
+                        <span class="status-dot"></span>
+                        <span id="statusText">AI Customer Support</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-controls">
+
+                <button id="homeButton"
+                        class="header-button"
+                        aria-label="Go to home"
+                        title="Home">
+
+                    <svg viewBox="0 0 24 24"
+                         width="20"
+                         height="20"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+
+                        <path d="m3 10 9-7 9 7"></path>
+                        <path d="M5 9v11h14V9"></path>
+                        <path d="M9 20v-6h6v6"></path>
+                    </svg>
+                </button>
+
+                <button id="themeToggle"
+                        class="header-button"
+                        aria-label="Toggle theme"
+                        title="Toggle theme">
+
+                    <svg id="themeIcon"
+                         viewBox="0 0 24 24"
+                         width="20"
+                         height="20"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2"></path>
+                        <path d="M12 20v2"></path>
+                        <path d="m4.93 4.93 1.41 1.41"></path>
+                        <path d="m17.66 17.66 1.41 1.41"></path>
+                        <path d="M2 12h2"></path>
+                        <path d="M20 12h2"></path>
+                        <path d="m4.93 19.07 1.41-1.41"></path>
+                        <path d="m17.66 6.34 1.41-1.41"></path>
+                    </svg>
+                </button>
+
+                <select id="languageSelect" aria-label="Select language">
+                    <option value="en">English</option>
+                    <option value="si">සිංහල</option>
+                    <option value="ta">தமிழ்</option>
+                </select>
+
+            </div>
+        </header>
+
+        <!-- CHAT MAIN -->
+        <main class="chat-main" id="chatMain">
+
+            <!-- WELCOME SCREEN -->
+            <section class="welcome-screen" id="welcomeScreen">
+
+                <div class="welcome-brand">
+                    <img src="{{ url_for('static', filename='images/logo.webp') }}"
+                         alt="Wijesinghe Textiles"
+                         class="welcome-logo">
+                </div>
+
+                <div class="welcome-content">
+
+                    <span class="welcome-eyebrow" id="welcomeEyebrow">
+                        YOUR SHOPPING ASSISTANT
+                    </span>
+
+                    <h2 id="welcomeTitle">
+                        Welcome to Wijesinghe Textiles
+                    </h2>
+
+                    <p id="welcomeDescription">
+                        How can I help you today? Explore our collections,
+                        find your section or ask us anything.
+                    </p>
+
+                </div>
+
+                <!-- QUICK ACTIONS -->
+                <div class="quick-actions" id="quickActions">
+
+                    <button class="quick-action" data-message="Tell me about women's wear">
+                        <span class="action-icon">👗</span>
+                        <span class="action-label" data-label="women">Women's Wear</span>
+                    </button>
+
+                    <button class="quick-action" data-message="Tell me about men's wear">
+                        <span class="action-icon">👔</span>
+                        <span class="action-label" data-label="men">Men's Wear</span>
+                    </button>
+
+                    <button class="quick-action" data-message="Tell me about kids' wear">
+                        <span class="action-icon">🧸</span>
+                        <span class="action-label" data-label="kids">Kids' Wear</span>
+                    </button>
+
+                    <button class="quick-action" data-message="Tell me about accessories">
+                        <span class="action-icon">👜</span>
+                        <span class="action-label" data-label="accessories">Accessories</span>
+                    </button>
+
+                    <button class="quick-action" data-message="Tell me about promotions">
+                        <span class="action-icon">🏷️</span>
+                        <span class="action-label" data-label="promotions">Promotions</span>
+                    </button>
+
+                    <button class="quick-action" data-message="Tell me about our branches">
+                        <span class="action-icon">📍</span>
+                        <span class="action-label" data-label="branches">Our Branches</span>
+                    </button>
+
+                    <button class="quick-action" data-message="Tell me about the exchange policy">
+                        <span class="action-icon">🔄</span>
+                        <span class="action-label" data-label="exchange">Exchange Policy</span>
+                    </button>
+
+                    <button class="quick-action" data-message="Tell me about special offers">
+                        <span class="action-icon">✨</span>
+                        <span class="action-label" data-label="offers">Special Offers</span>
+                    </button>
+
+                </div>
+
+                <!-- FLOOR GUIDE -->
+                <section class="floor-guide" id="floorGuide">
+
+                    <div class="floor-heading">
+
+                        <span class="floor-eyebrow" id="floorEyebrow">
+                            EXPLORE OUR STORE
+                        </span>
+
+                        <h3 id="floorTitle">Our Store Floor Guide</h3>
+
+                        <p id="floorDescription">
+                            Find the right section for your shopping.
+                            Tap a floor to learn more.
+                        </p>
+
+                    </div>
+
+                    <div class="floor-grid">
+
+                        <button class="floor-card"
+                                data-message="What can I find on Floor 1? Tell me about the accessories section and cashier.">
+
+                            <div class="floor-top">
+                                <span class="floor-number">01</span>
+                                <span class="floor-icon">👜</span>
+                            </div>
+
+                            <h4 data-floor-title="accessories">Accessories & Cashier</h4>
+
+                            <p data-floor-desc="accessories">
+                                Bags, Perfumes, Watches, Gifts & Cashier
+                            </p>
+
+                            <span class="floor-link" data-floor-link>
+                                Explore floor →
+                            </span>
+
+                        </button>
+
+                        <button class="floor-card"
+                                data-message="What can I find on Floor 2? Tell me about the kids' section.">
+
+                            <div class="floor-top">
+                                <span class="floor-number">02</span>
+                                <span class="floor-icon">🧸</span>
+                            </div>
+
+                            <h4 data-floor-title="kids">Kids' Section</h4>
+
+                            <p data-floor-desc="kids">
+                                Kids' Clothing, Tops, Jeans & Party Wear
+                            </p>
+
+                            <span class="floor-link" data-floor-link>
+                                Explore floor →
+                            </span>
+
+                        </button>
+
+                        <button class="floor-card"
+                                data-message="What can I find on Floor 3? Tell me about the women's section.">
+
+                            <div class="floor-top">
+                                <span class="floor-number">03</span>
+                                <span class="floor-icon">👗</span>
+                            </div>
+
+                            <h4 data-floor-title="women">Women's Section</h4>
+
+                            <p data-floor-desc="women">
+                                Sarees, Dresses, Tops & Jeans
+                            </p>
+
+                            <span class="floor-link" data-floor-link>
+                                Explore floor →
+                            </span>
+
+                        </button>
+
+                        <button class="floor-card"
+                                data-message="What can I find on Floor 4? Tell me about the men's section.">
+
+                            <div class="floor-top">
+                                <span class="floor-number">04</span>
+                                <span class="floor-icon">👔</span>
+                            </div>
+
+                            <h4 data-floor-title="men">Men's Section</h4>
+
+                            <p data-floor-desc="men">
+                                Shirts, Denim, Shorts & Formal Wear
+                            </p>
+
+                            <span class="floor-link" data-floor-link>
+                                Explore floor →
+                            </span>
+
+                        </button>
+
+                        <button class="floor-card"
+                                data-message="What can I find on Floor 5? Tell me about the sports section.">
+
+                            <div class="floor-top">
+                                <span class="floor-number">05</span>
+                                <span class="floor-icon">🏃</span>
+                            </div>
+
+                            <h4 data-floor-title="sports">Sports Section</h4>
+
+                            <p data-floor-desc="sports">
+                                Sportswear, Gym Wear & Fitness Accessories
+                            </p>
+
+                            <span class="floor-link" data-floor-link>
+                                Explore floor →
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+            <!-- CHAT MESSAGES -->
+            <div id="chatMessages" class="chat-messages"></div>
+
+        </main>
+
+        <!-- CHAT INPUT -->
+        <footer class="chat-footer">
+
+            <div class="input-container">
+
+                <textarea
+                    id="messageInput"
+                    placeholder="Ask us anything..."
+                    rows="1"
+                    aria-label="Message input"></textarea>
+
+                <button id="sendButton" aria-label="Send message">
+
+                    <svg viewBox="0 0 24 24"
+                         width="22"
+                         height="22"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+
+                        <path d="M22 2L11 13"></path>
+                        <path d="M22 2L15 22L11 13L2 9L22 2"></path>
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+            <div class="footer-note" id="footerNote">
+                Powered by AI · WIJESINGHE TEXTILES
+            </div>
+
+        </footer>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>

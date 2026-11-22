@@ -1,0 +1,872 @@
+/* ================================
+   THEME VARIABLES
+================================ */
+
+:root {
+    --bg: #f5f3ef;
+    --surface: #ffffff;
+    --surface-soft: #faf8f5;
+    --text: #171717;
+    --muted: #77736d;
+    --accent: #8d6b42;
+    --accent-dark: #6f5030;
+    --border: #e8e3dc;
+    --shadow: 0 12px 40px rgba(40, 30, 20, 0.06);
+
+    --header-bg: rgba(255, 255, 255, 0.85);
+    --footer-bg: rgba(255, 255, 255, 0.85);
+    --container-bg: rgba(255, 255, 255, 0.65);
+    --floor-card-bg: linear-gradient(145deg, #ffffff, #faf8f5);
+    --placeholder: #a39c93;
+}
+
+html[data-theme="dark"] {
+    --bg: #101114;
+    --surface: #1b1c20;
+    --surface-soft: #24252a;
+    --text: #f1f1f1;
+    --muted: #a6a6a6;
+    --accent: #c19a6b;
+    --accent-dark: #a17b50;
+    --border: #33343a;
+    --shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+
+    --header-bg: rgba(27, 28, 32, 0.95);
+    --footer-bg: rgba(27, 28, 32, 0.95);
+    --container-bg: rgba(27, 28, 32, 0.92);
+    --floor-card-bg: linear-gradient(145deg, #1b1c20, #24252a);
+    --placeholder: #888888;
+}
+
+/* ================================
+   BASE
+================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 10% 5%,
+            rgba(182, 153, 116, 0.10),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(182, 153, 116, 0.08),
+            transparent 35%
+        ),
+        var(--bg);
+
+    color: var(--text);
+    font-family: "DM Sans", sans-serif;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button,
+select,
+textarea {
+    -webkit-tap-highlight-color: transparent;
+}
+
+svg {
+    display: block;
+}
+
+/* ================================
+   APP CONTAINER
+================================ */
+
+.app-container {
+    width: min(1100px, calc(100% - 32px));
+    margin: 30px auto;
+
+    min-height: calc(100vh - 60px);
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--container-bg);
+
+    border: 1px solid var(--border);
+    border-radius: 26px;
+
+    overflow: hidden;
+
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(16px);
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.header {
+    padding: 22px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    border-bottom: 1px solid var(--border);
+    background: var(--header-bg);
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.brand-logo {
+    width: 54px;
+    height: 54px;
+
+    object-fit: contain;
+    border-radius: 14px;
+}
+
+.brand-info h1 {
+    font-size: 15px;
+    letter-spacing: 1.5px;
+
+    margin: 0 0 5px;
+
+    font-weight: 700;
+}
+
+.status-line {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    background: #40a66a;
+    border-radius: 50%;
+
+    box-shadow: 0 0 10px rgba(64, 166, 106, 0.4);
+}
+
+/* ================================
+   HEADER CONTROLS
+================================ */
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-button {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+    border-radius: 13px;
+
+    background: var(--surface);
+    color: var(--text);
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.header-button:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.header-button:active {
+    transform: scale(0.96);
+}
+
+.header-controls select {
+    border: 1px solid var(--border);
+
+    background: var(--surface);
+    color: var(--text);
+
+    padding: 10px 14px;
+    border-radius: 12px;
+
+    outline: none;
+    cursor: pointer;
+
+    transition: border-color 0.2s ease;
+}
+
+.header-controls select:hover {
+    border-color: var(--accent);
+}
+
+/* ================================
+   MAIN
+================================ */
+
+.chat-main {
+    flex: 1;
+
+    padding: 35px 30px;
+
+    overflow-y: auto;
+
+    transition: background 0.3s ease;
+}
+
+.welcome-screen {
+    animation: fadeUp 0.5s ease;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   WELCOME
+================================ */
+
+.welcome-brand {
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 18px;
+}
+
+.welcome-logo {
+    width: 85px;
+    height: 85px;
+
+    object-fit: contain;
+}
+
+.welcome-content {
+    text-align: center;
+
+    max-width: 650px;
+
+    margin: 0 auto 30px;
+}
+
+.welcome-eyebrow {
+    color: var(--accent);
+
+    font-size: 11px;
+    letter-spacing: 3px;
+
+    font-weight: 700;
+}
+
+.welcome-content h2 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 600;
+
+    margin: 13px 0;
+    line-height: 1.3;
+}
+
+.welcome-content p {
+    color: var(--muted);
+
+    line-height: 1.8;
+    font-size: 14px;
+
+    margin: 0;
+}
+
+/* ================================
+   QUICK ACTIONS
+================================ */
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 12px;
+
+    margin: 0 auto 40px;
+}
+
+.quick-action {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 17px;
+
+    padding: 18px 12px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    color: var(--text);
+
+    min-height: 110px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.quick-action:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(141, 107, 66, 0.45);
+
+    box-shadow: 0 10px 25px rgba(60, 40, 20, 0.07);
+
+    background: var(--surface-soft);
+}
+
+.action-icon {
+    font-size: 25px;
+}
+
+.action-label {
+    font-size: 13px;
+    font-weight: 600;
+
+    text-align: center;
+}
+
+/* ================================
+   FLOOR GUIDE
+================================ */
+
+.floor-guide {
+    padding-top: 30px;
+
+    border-top: 1px solid var(--border);
+}
+
+.floor-heading {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.floor-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    color: var(--accent);
+}
+
+.floor-heading h3 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 28px;
+    font-weight: 600;
+
+    margin: 10px 0;
+}
+
+.floor-heading p {
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.floor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.floor-card {
+    position: relative;
+
+    text-align: left;
+
+    background: var(--floor-card-bg);
+
+    border: 1px solid var(--border);
+    border-radius: 20px;
+
+    padding: 22px;
+
+    color: var(--text);
+
+    min-height: 190px;
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease,
+        background 0.3s ease;
+}
+
+.floor-card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(141, 107, 66, 0.5);
+
+    box-shadow: 0 12px 30px rgba(60, 40, 20, 0.08);
+}
+
+.floor-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 17px;
+}
+
+.floor-number {
+    color: var(--accent);
+
+    font-size: 12px;
+    letter-spacing: 2px;
+
+    font-weight: 700;
+}
+
+.floor-icon {
+    font-size: 28px;
+}
+
+.floor-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+
+    margin: 0 0 9px;
+}
+
+.floor-card p {
+    font-size: 12px;
+    line-height: 1.8;
+
+    color: var(--muted);
+
+    margin: 0 0 16px;
+}
+
+.floor-link {
+    font-size: 11px;
+    font-weight: 700;
+
+    color: var(--accent);
+
+    letter-spacing: 0.3px;
+}
+
+/* ================================
+   CHAT MESSAGES
+================================ */
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.message {
+    display: flex;
+
+    animation: fadeUp 0.3s ease;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message.assistant {
+    justify-content: flex-start;
+}
+
+.message-bubble {
+    max-width: 75%;
+
+    padding: 15px 18px;
+
+    border-radius: 18px;
+
+    font-size: 14px;
+    line-height: 1.8;
+
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
+.message.user .message-bubble {
+    background: var(--accent);
+    color: #ffffff;
+
+    border-bottom-right-radius: 5px;
+}
+
+.message.assistant .message-bubble {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    color: var(--text);
+
+    border-bottom-left-radius: 5px;
+
+    box-shadow: 0 5px 15px rgba(40, 30, 20, 0.03);
+}
+
+/* ================================
+   TYPING
+================================ */
+
+.typing-indicator {
+    display: flex;
+    gap: 5px;
+
+    align-items: center;
+
+    padding: 17px 20px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    width: fit-content;
+}
+
+.typing-indicator span {
+    width: 7px;
+    height: 7px;
+
+    background: var(--accent);
+    border-radius: 50%;
+
+    animation: typing 1.2s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 60%, 100% {
+        opacity: 0.35;
+        transform: translateY(0);
+    }
+
+    30% {
+        opacity: 1;
+        transform: translateY(-4px);
+    }
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+.chat-footer {
+    padding: 20px 30px 25px;
+
+    border-top: 1px solid var(--border);
+
+    background: var(--footer-bg);
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px 12px 10px 18px;
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    background: var(--surface);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.3s ease;
+}
+
+.input-container:focus-within {
+    border-color: rgba(141, 107, 66, 0.5);
+
+    box-shadow: 0 0 0 3px rgba(141, 107, 66, 0.06);
+}
+
+#messageInput {
+    flex: 1;
+
+    resize: none;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+    color: var(--text);
+
+    min-height: 25px;
+    max-height: 150px;
+
+    padding: 5px 0;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+#messageInput::placeholder {
+    color: var(--placeholder);
+}
+
+#sendButton {
+    width: 44px;
+    height: 44px;
+
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 14px;
+
+    background: var(--accent);
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+#sendButton:hover {
+    background: var(--accent-dark);
+    transform: scale(1.04);
+}
+
+#sendButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.footer-note {
+    text-align: center;
+
+    font-size: 10px;
+    letter-spacing: 0.5px;
+
+    color: var(--muted);
+
+    margin-top: 12px;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 800px) {
+
+    .quick-actions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .floor-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .chat-main {
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .app-container {
+        width: 100%;
+        margin: 0;
+
+        min-height: 100vh;
+
+        border-radius: 0;
+        border: none;
+    }
+
+    .header {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .brand {
+        gap: 10px;
+    }
+
+    .brand-logo {
+        width: 42px;
+        height: 42px;
+    }
+
+    .brand-info h1 {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+    .status-line {
+        font-size: 10px;
+    }
+
+    .header-controls {
+        gap: 6px;
+    }
+
+    .header-button {
+        width: 38px;
+        height: 38px;
+        border-radius: 11px;
+    }
+
+    .header-controls select {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .chat-main {
+        padding: 25px 16px;
+    }
+
+    .welcome-logo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .welcome-content h2 {
+        font-size: 28px;
+    }
+
+    .welcome-content p {
+        font-size: 13px;
+    }
+
+    .quick-action {
+        min-height: 100px;
+        padding: 15px 8px;
+        border-radius: 15px;
+    }
+
+    .action-label {
+        font-size: 12px;
+    }
+
+    .floor-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .floor-card {
+        min-height: auto;
+        padding: 20px;
+    }
+
+    .floor-heading h3 {
+        font-size: 25px;
+    }
+
+    .message-bubble {
+        max-width: 88%;
+        font-size: 13px;
+    }
+
+    .chat-footer {
+        padding: 15px 16px 20px;
+    }
+}
+
+@media (max-width: 380px) {
+
+    .brand-info h1 {
+        font-size: 11px;
+    }
+
+    .header-controls {
+        gap: 5px;
+    }
+
+    .header-button {
+        width: 35px;
+        height: 35px;
+    }
+
+    .quick-actions {
+        gap: 8px;
+    }
+
+    .quick-action {
+        min-height: 90px;
+    }
+}
